@@ -1,0 +1,1 @@
+[{"fields": {"balance": "5000.05", "is_active": true, "card_id": "1111111111111111", "pin": 1111}, "model": "card.card", "pk": 1}, {"fields": {"balance": "0.00", "is_active": true, "card_id": "2222222222222222", "pin": 2222}, "model": "card.card", "pk": 2}]

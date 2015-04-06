@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %} Enter the amount {% endblock title %}
+{% block content %}
+<h3>Enter the amount</h3>
+<div id="form-input">
+    <input id="format-input" class="ui-corner-all" type="text" value="0"/>
+    <form method="post" id="form-input-form" style="display:none">
+        {% csrf_token %}
+        {{ form }}
+    </form>
+</div>
+<div id="numeric-keyboard">
+    <button value="1">1</button>
+    <button value="2">2</button>
+    <button value="3">3</button>
+    <button value="4">4</button>
+    <button value="5">5</button>
+    <button value="6">6</button>
+    <button value="7">6</button>
+    <button value="8">6</button>
+    <button value="9">9</button>
+    <button class="center" value="0">0</button>
+    <div class="void"></div>
+    <div class="special">
+        <button value="clear">Clear</button>
+        <button value="ok">Ok</button>
+        <button value="exit">Exit</button>
+    </div>
+    <script>
+        $(function() {
+            $( '#format-input' )
+              .button()
+              .prop("readonly", true);
+            $( "div #numeric-keyboard button" )
+              .button()
+              .click(function() {
+                var val_key = $( this ).prop('value');
+                if (val_key.match(/^([0-9])$/)) {
+                    var value = $( '#id_amount' ).val().concat(val_key);
+                    if (value.length <= 8) {
+                        $( '#format-input' ).val(parseInt(value));
+                        $( '#id_amount' ).val(parseInt(value));
+                    }
+                }
+                else {
+                    switch(val_key) {
+                        case 'clear':
+                            $( '#format-input' ).val('0');
+                            $( '#id_amount' ).val('0');
+                            break;
+                        case 'ok':
+                            if ($( '#id_amount' ).val() >= 10) {
+                                $( '#form-input-form' ).submit();
+                            }
+                            else {
+                                alert('Minimal amount 10');
+                            }
+                            break;
+                        case 'exit':
+                            window.location.replace("{% url 'logout' %}");
+                            break;
+                    }
+                }
+
+              });
+        });
+
+    </script>
+</div>
+{% endblock content %}

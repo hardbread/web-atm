@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} {{ msg|default_if_none:'' }} {% endblock title %}
+{% block content %}
+<h3>{{ msg|default_if_none:'' }} <span id="go-back">Back</span></h3>
+<script>
+        $(function() {
+            $( '#go-back' )
+              .button()
+              .click(function() {
+                    window.location.replace("{% url back_to %}");
+              });
+        });
+</script>
+{% endblock content%}

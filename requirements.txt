@@ -1,0 +1,2 @@
+# Django web framework
+django==1.8

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+<head>
+    <title>{% block title %} {% endblock title %}</title>
+    {% block meta %}
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    {% endblock meta %}
+    {% block css %}
+        <link href="{% static 'css/table_report.css' %}" type="text/css" rel="stylesheet">
+        <link href="{% static 'css/jquery-ui.css' %}" type="text/css" rel="stylesheet">
+        <link href="{% static 'css/jquery-ui.theme.css' %}" type="text/css" rel="stylesheet">
+        <link href="{% static 'css/default.css' %}" type="text/css" rel="stylesheet">
+    {% endblock css %}
+    {% block js %}
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    {% endblock js %}
+</head>
+<body>
+<div id="main_container">
+    <div id="u0" class="u0_container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>

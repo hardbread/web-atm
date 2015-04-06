@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Select the operation {% endblock title %}
+{% block content %}
+<h3 id="operations">
+    <a href="{% url 'get_balance' %}" id="balance">Balance</a>
+    <a href="{% url 'get_cash' %}" id="get_cash">Get Cash</a>
+    <a href="{% url 'logout' %}" id="exit">Exit</a>
+</h3>
+<script>
+$(function() {
+            $( '#operations a' )
+              .button()
+              .click(function() {
+
+              });
+});
+</script>
+{% endblock content %}
